@@ -11,7 +11,7 @@ import { Team, Fixture, Player } from '../models';
 export class TeamComponent implements OnInit{
   private team: Team;
   private fixtures: Fixture[] = [];
-  // private players: Player[] = [];
+  private players: Player[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +27,8 @@ export class TeamComponent implements OnInit{
     this.footballService.getTeamFixtures(teamId)
       .subscribe(fixtures => this.fixtures = fixtures) 
 
-    // this.footballService.getPlayers(teamId)
-    // .subscribe(players => this.players = players);
+    this.footballService.getPlayers(teamId)
+      .subscribe(players => this.players = players);
   }
 
   teamSelected(teamId: number) {

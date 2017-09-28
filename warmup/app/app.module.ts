@@ -15,7 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './color'
 
 // Lesson 3
-// import { FootballService } from './football.service';
+import { FootballService } from './football.service';
 import { ServiceTestComponent } from './service-test/service-test.component';
 import { TablesComponent } from './football/tables.component';
 import { LeagueTableComponent } from './football/league-table.component';
@@ -69,7 +69,7 @@ import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/calendar/angul
   ],
   providers: [
     //Lesson 3
-    // FootballService
+    FootballService
   ],
   schemas: [
     NO_ERRORS_SCHEMA

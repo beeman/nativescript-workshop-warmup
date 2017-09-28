@@ -49,7 +49,9 @@ export class FootballService {
 
     const url = `${this.baseUrl}/teams/${teamId}`;
 
-    return this.notImplemented('getTeam');
+    return this.http.get(url, { headers: this.header })
+      .map(result => result.json())
+      .map(teams => FootballFactory.teamFromRaw(teams));
   }
 
   /**
@@ -57,11 +59,11 @@ export class FootballService {
    * URL Structure: https://api.football-data.org/v1/teams/{teamId}/players
    */
   public getPlayers(teamId: number): Observable<Player[]> {
-    // 1. construct a url based on https://api.football-data.org/v1/teams/{teamId}/players
-    // 2. call http get with the url and header
-    // 3. use FootballFactory.playersFromRaw to convert the output
-    
-    return this.notImplemented('getPlayers');
+    const url = `${this.baseUrl}/teams/${teamId}/players`;
+
+    return this.http.get(url, { headers: this.header })
+      .map(result => result.json())
+      .map(teams => FootballFactory.playersFromRaw(teams));
   }
 
   /**
@@ -72,8 +74,11 @@ export class FootballService {
     // 1. construct a url based on https://api.football-data.org/v1/teams/{teamId}/fixtures
     // 2. call http get with the url and header
     // 3. use FootballFactory.fixturesFromRaw to convert the output
+    const url = `${this.baseUrl}/teams/${teamId}/fixtures`;
 
-    return this.notImplemented('getTeamFixtures');
+    return this.http.get(url, { headers: this.header })
+      .map(result => result.json())
+      .map(teams => FootballFactory.fixturesFromRaw(teams));
   }
 
   /**
@@ -106,8 +111,18 @@ export class FootballService {
       // or use this.buildSearchParams(options) if you struggle
     // 3. call http get with the url and header
     // 4. use FootballFactory.fixturesFromRaw to convert the output
+    const url = `${this.baseUrl}/competitions/${competitionId}/fixtures`;
+    let searchParams: URLSearchParams = new URLSearchParams();
+    if (options && options.matchday) {
+      searchParams.set('matchday', options.matchday.toString());
+    }
+    if (options && options.timeFrame) {
+      searchParams.set('timeFrame', options.timeFrame.toString());
+    }
 
-    return this.notImplemented('getFixtures');
+    return this.http.get(url, { headers: this.header, params: searchParams })
+      .map(result => result.json())
+      .map(teams => FootballFactory.fixturesFromRaw(teams));
   }
 
   /**

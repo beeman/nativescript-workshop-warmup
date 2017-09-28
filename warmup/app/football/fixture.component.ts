@@ -7,13 +7,13 @@ import { Fixture } from '../models';
   styleUrls: ['./football/fixture.component.css']
 })
 export class FixtureComponent {
-  public fixture: Fixture;
+  @Input() public fixture: Fixture;
 
   public fakeDate: Date = new Date();
 
   public displayScore(): boolean {
-    // return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
-    return false;
+    return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
+    // return false;
   }
 
 }

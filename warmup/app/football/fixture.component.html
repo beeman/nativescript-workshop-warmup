@@ -1,18 +1,18 @@
 <GridLayout rows="auto" columns="*, auto, *" class="list-group-item">  
-  <Label col="0" text="homeTeamName" class="h4 text-right"></Label>
+  <Label col="0" [text]="fixture.homeTeamName" class="h4 text-right"></Label>
   <StackLayout col="1"  horizontalAlignment="center" class="m-x-10 h3">
     <!-- Update text to bind to fixture.result. goalsHomeTeam/goalsAwayTeam see models/fixture.model.ts for the data structure -->
     <StackLayout *ngIf="displayScore()"  orientation="horizontal">
-      <Label [text]="0" class="score m-r-5"></Label>
-      <Label [text]="0" class="score"></Label>
+      <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5" [class.in-play]="fixture.status === 'IN_PLAY'"></Label>
+      <Label [text]="fixture.result.goalsAwayTeam" class="score" [class.in-play]="fixture.status === 'IN_PLAY'"></Label>
     </StackLayout>
 
     <!-- Update fakeDate to get the date from the fixtures -->
     <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
-        <Label [text]="fakeDate | date:'H:m'"></Label>
-        <Label [text]="fakeDate | date:'dd-MMM'" textWrap="true"></Label>
+      <Label [text]="fixture.date | date:'H:m'"></Label>
+      <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
     </StackLayout>
   </StackLayout>
 
-  <Label col="2" text="awayTeamName" class="h4 text-left"></Label>
+  <Label col="2" [text]="fixture.awayTeamName" class="h4 text-left"></Label>
 </GridLayout>

@@ -11,7 +11,7 @@
   </GridLayout>
 
   <!-- attach to itemTap event and call onTeamSelected($event) -->
-  <ListView [items]="table?.standing" class="list-group">
+  <ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelected($event)">
     <ng-template let-team="item">
       <GridLayout rows="30" columns="30, *, 30, 30, 30, 30, 40, 40">
         <Label col="0" [text]="team.position" class="text-center"></Label>

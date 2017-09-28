@@ -11,6 +11,7 @@ import { FootballService } from '../football.service';
 export class LeagueTableComponent implements OnInit{
   @Input() public competitionId: number;
   // Add Output EventEmitter here
+  @Output() teamSelected: EventEmitter<number> = new EventEmitter()
 
   public table: LeagueTable;
   public teams: Team[];
@@ -48,5 +49,6 @@ export class LeagueTableComponent implements OnInit{
     const selectedTeamId = this.table.standing[event.index].teamId;
     console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
     // Add eventemitter emit call here with the selectedTeamId
+    this.teamSelected.emit(selectedTeamId)
   }
 }
