@@ -26,6 +26,7 @@ import { PlayerComponent } from './football/player.component';
 
 // Lesson 4
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
+import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/calendar/angular';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
     AppRoutingModule,
     NativeScriptUIDataFormModule,
     NativeScriptHttpModule,
-    NativeScriptFormsModule
+    NativeScriptFormsModule,
+    NativeScriptUICalendarModule,
   ],
   declarations: [
     AppComponent,

@@ -39,6 +39,27 @@ export class ProfileComponent {
       codingPower: 1
     }
   }
+
+  public feedback = {
+    title: 'Amazing Results',
+    score: 5,
+    date: new Date(),
+    component: 'DataForm',
+    note: `This looks really great, 
+I was really amazed how little effort it took to implement it.
+I can't wait to see other components`,
+    test: false
+  }
+
+  public components: string[] = [
+    'DataForm',
+    'SideDrawer',
+    'Calendar',
+    'ListView',
+    'Gauge',
+    'AutoComplete'
+  ];
+
 }
 
 export interface Profile {
