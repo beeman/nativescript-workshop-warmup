@@ -15,7 +15,10 @@ export class RGBComponent implements OnInit{
   }
 
   ngOnInit() {
-    
+    // this.rgb = this.route.snapshot.params['rgb']
+    this.route.params.subscribe(
+      res => this.rgb = res['rgb']
+    )
   }
 
   goBlue() {

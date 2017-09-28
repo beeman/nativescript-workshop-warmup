@@ -4,31 +4,36 @@
 <StackLayout>
   <Button
     text="Open Blue"
-    [nsRouterLink]="[]"
+    [nsRouterLink]="['blue']"
+    pageTransition="curl"
     class="btn blue">
   </Button>
 
   <Button
     text="Open Red"
-    [nsRouterLink]="[]"
+    [nsRouterLink]="['red']"
+    pageTransition="fade"
     class="btn red">
   </Button>
 
   <Button
     text="Open RGB (pink)"
-    [nsRouterLink]="[]"
+    [nsRouterLink]="['rgb', '#ff0088']"
+    pageTransition="flip"
     class="btn pink">
   </Button>
 
   <Button
     text="Open RGB (gray)"
-    [nsRouterLink]="[]"
+    [nsRouterLink]="['rgb', 'gray']"
+    pageTransition="flip"
     class="btn gray">
   </Button>
 
   <Button
     text="Open RGB (#bad)"
-    [nsRouterLink]="[]"
+    [nsRouterLink]="['rgb', '#bad']"
+    pageTransition="flip"
     class="btn bad">
   </Button>
 

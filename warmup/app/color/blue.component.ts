@@ -14,18 +14,18 @@ export class BlueComponent{
   }
 
   goRed() {
-    
+    this.router.navigate(['../red'], {relativeTo: this.route})
   }
 
   goPink() {
-    
+    this.router.navigate(['../rgb', this.pink], {relativeTo: this.route})
   }
 
   goBack() {
-    
+    this.router.back()
   }
 
   goHome() {
-    
+    this.router.navigate(['/'], { clearHistory: true });
   }
 }

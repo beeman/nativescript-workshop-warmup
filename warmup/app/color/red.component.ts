@@ -10,14 +10,26 @@ import { ActivatedRoute } from '@angular/router';
 export class RedComponent {
   
   constructor(private router: RouterExtensions, private route: ActivatedRoute) {
+    console.log('hello!!')
   }
 
   goBlue() {
-    
+    this.router.navigate(['/color/blue'], {
+      transition: {
+        name: 'slideTop',
+        duration: 2000,
+        curve: 'spring',
+      }
+    })
   }
 
   goGray() {
-    
+    this.router.navigate(['/color/rerrrrrgb/gray'], {
+      transition: {
+        name: 'fade',
+        duration: 1000,
+      }
+    })
   }
 
   goBack() {
