@@ -24,8 +24,8 @@ const routes: Routes = [
   // { path: '', redirectTo: '/profile', pathMatch: 'full' },
   // { path: '', redirectTo: '/color', pathMatch: 'full' },
   // { path: '', redirectTo: '/service-test', pathMatch: 'full' },
-  { path: '', redirectTo: '/football', pathMatch: 'full' },
-  // { path: '', redirectTo: '/plugins', pathMatch: 'full' },
+  // { path: '', redirectTo: '/football', pathMatch: 'full' },
+  { path: '', redirectTo: '/plugins', pathMatch: 'full' },
 
     // Lesson 1
   { path: 'profile', component: ProfileComponent },

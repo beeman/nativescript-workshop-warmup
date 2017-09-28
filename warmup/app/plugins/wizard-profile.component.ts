@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageAsset } from "image-asset";
 import { ImageSource } from 'image-source';
- 
+
+import * as camera from 'nativescript-camera';
+import * as SocialShare from 'nativescript-social-share';
+import { TNSFancyAlert } from 'nativescript-fancyalert';
 
 @Component({
   selector: 'my-share',
@@ -28,7 +31,7 @@ export class WizardProfileComponent implements OnInit{
   ngOnInit() {
     // get camera permissions when loading for the first time
     
-
+    camera.requestPermissions()
     this.reloadPowers();
   }
 
@@ -36,18 +39,20 @@ export class WizardProfileComponent implements OnInit{
     const messageBody = `name: ${this.name}, powers: ${JSON.stringify(this.powers)}`;
 
     // Add social shareText code here
-    
+    SocialShare.shareText(messageBody)
   }
 
   sharePicture() {
     if(this.profilePicture) {
       // Call SocialShare.shareImage here
-
+      SocialShare.shareImage(this.profilePicture)
     }
   }
 
   takeProfilePicture() {
     // call camera.takePicture here
+    camera.takePicture()
+      .then(img => this.updateProfilePicture(img))
   }
 
   updateProfilePicture(asset: ImageAsset) {
@@ -76,11 +81,11 @@ export class WizardProfileComponent implements OnInit{
 
   displayPower(power: Power) {
     if(power.level < 5) {
-      alert(power.name + ' ' + power.description + ' ' + 'Nice');
+      TNSFancyAlert.showNotice(power.name + ' ' + power.description + ' ' + 'Nice');
     } else if(power.level < 9) {
-      alert(power.name + ' ' + power.description + ' ' + 'W00000W!!!');
+      TNSFancyAlert.showInfo(power.name + ' ' + power.description + ' ' + 'W00000W!!!');
     } else {
-      alert(power.name + ' ' + power.description + ' ' + 'Be careful');
+      TNSFancyAlert.showWarning(power.name + ' ' + power.description + ' ' + 'Be careful');
     }
   }
 }
